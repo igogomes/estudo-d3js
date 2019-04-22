@@ -1,0 +1,18 @@
+.barra {
+
+    stroke: black;
+    stroke-width: 2px;
+
+}
+
+#grafico {
+
+    border: thin solid black;
+
+}
+
+.rotulo {
+
+    text-anchor: middle;
+
+}

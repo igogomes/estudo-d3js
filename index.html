@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+
+        <meta charset="UTF-8"/>
+        <title>D3JS</title>
+        <script src="d3.min.js"></script>
+        <script src="grafico.js"></script>
+        <link href="grafico.css" rel="stylesheet"/>
+        
+        <script>
+        
+            function executa() {
+            
+                var dados = [
+
+                    {chave: 'Frango', valor: 56},
+                    {chave: 'Carne', valor: 73},
+                    {chave: 'Vegetariano', valor: 20},
+                    {chave: 'Queijo', valor: 115},
+                    {chave: 'Goiabada', valor: 60},
+                    {chave: 'Banana', valor: 60},
+                    {chave: 'Calabresa', valor: 33}
+                    
+                ];
+                
+                grafico({
+                    seletor: '#grafico',
+                    dados: dados,
+                    altura: 600,
+                    largura: 900
+                })
+
+            }
+        
+        </script>
+
+    </head>
+
+    <body onload="executa()">
+
+        <h1>D3.js</h1>
+
+        <svg id="grafico">
+
+
+
+        </svg>
+
+    </body>
+
+</html>
