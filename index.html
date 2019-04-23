@@ -11,26 +11,59 @@
         
         <script>
         
+            var p;
+
+            var dados = [
+
+                {chave: 'Frango', valor: 56},
+                {chave: 'Carne', valor: 73},
+                {chave: 'Vegetariano', valor: 20},
+                {chave: 'Queijo', valor: 115},
+                {chave: 'Goiabada', valor: 60},
+                {chave: 'Banana', valor: 60},
+                {chave: 'Calabresa', valor: 33}
+
+            ];
+
             function executa() {
             
-                var dados = [
-
-                    {chave: 'Frango', valor: 56},
-                    {chave: 'Carne', valor: 73},
-                    {chave: 'Vegetariano', valor: 20},
-                    {chave: 'Queijo', valor: 115},
-                    {chave: 'Goiabada', valor: 60},
-                    {chave: 'Banana', valor: 60},
-                    {chave: 'Calabresa', valor: 33}
-                    
-                ];
-                
-                grafico({
+                p = new GraficoDeColunas({
                     seletor: '#grafico',
                     dados: dados,
                     altura: 600,
-                    largura: 900
+                    largura: 900,
+                    tituloX: 'Tipos de Pastéis',
+                    tituloY: 'Quantidade Vendida',
+                    callback: clicado
                 })
+
+            }
+
+            function crescente() {
+
+                dados.sort((a,b)=>a.valor-b.valor);
+                p.atualize(dados);
+
+            }
+
+            function decrescente() {
+
+                dados.sort((a,b)=>b.valor-a.valor);
+                p.atualize(dados);
+
+            }
+
+            function alfabetica() {
+
+                dados.sort((a,b)=>a.chave.localeCompare(b.chave));
+                p.atualize(dados);
+
+            }
+
+            function clicado(d) {
+
+                document.getElementById('chaveSelecionada').innerHTML = d.chave;
+                document.getElementById('valorSelecionado').innerHTML = d.valor;
 
             }
         
@@ -47,7 +80,22 @@
 
 
         </svg>
+        <p>
 
+            <button onclick="crescente()">Ordem Crescente</button>
+            <button onclick="decrescente()">Ordem Decrescente</button>
+            <button onclick="alfabetica()">Ordem Alfabética</button>
+
+
+
+        </p>
+
+        <h3>Seleção</h3>
+
+        <p>
+            Chave: <span id="chaveSelecionada"></span></br>
+            Valor: <span id="valorSelecionado"></span>
+        </p>
     </body>
 
 </html>
